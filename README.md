@@ -61,5 +61,5 @@ kubectl apply -f pipeline/pipelinerun.yaml -n demo
 ```
 
 ```text
-kubectl create secret docker-registry container-registry --docker-server=quay.io/savitaashture --docker-username=savitaashture --docker-password=12_abcdefG -n demo
+kubectl create secret docker-registry container-registry --docker-server=<dockerhub> --docker-username=<username> --docker-password=<password> -n demo
 ```
