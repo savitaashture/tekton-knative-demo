@@ -45,8 +45,19 @@ kubectl apply -f TaskRuns/kn.yaml -n demo
 
 ## Install Tekton Pipeline
 
+* Create Pipeline
 ```yaml
 kubectl apply -f pipeline/pipeline.yaml -n demo
+```
+
+* Create resources which gives permissions to access knative objects
+```yaml
+kubectl apply -f common/permissions.yaml
+```
+
+* Create secrets to push the images to docker registry
+```text
+kubectl create secret docker-registry container-registry --docker-server=<dockerhub> --docker-username=<username> --docker-password=<password> -n demo
 ```
 
 ## Install Tekton PipelineRun
@@ -58,8 +69,4 @@ kubectl apply -f common/pipeline-pvc.yaml -n demo
 * Create PipelineRun
 ```yaml
 kubectl apply -f pipeline/pipelinerun.yaml -n demo
-```
-
-```text
-kubectl create secret docker-registry container-registry --docker-server=<dockerhub> --docker-username=<username> --docker-password=<password> -n demo
 ```
