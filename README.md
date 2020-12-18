@@ -68,5 +68,5 @@ kubectl apply -f common/pipeline-pvc.yaml -n demo
 ```
 * Create PipelineRun
 ```yaml
-kubectl apply -f pipeline/pipelinerun.yaml -n demo
+kubectl create -f pipeline/pipelinerun.yaml -n demo
 ```
