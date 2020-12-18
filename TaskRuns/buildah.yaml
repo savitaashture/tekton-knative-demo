@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: buildah-run
+spec:
+  taskRef:
+    name: buildah
+  params:
+    - name: IMAGE
+      value: quay.io/savitaashture/helloworld-go
+  workspaces:
+    - name: source
+      persistentVolumeClaim:
+        claimName: cloned-repo

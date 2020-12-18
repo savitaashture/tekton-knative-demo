@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: build-deploy-knative-service-run
+spec:
+  serviceAccountName: kn-deployer-account
+  pipelineRef:
+    name: build-deploy-knative-service
+  workspaces:
+    - name: source
+      persistentvolumeclaim:
+        claimName: clone-source-pvc
+  params:
+    - name: GIT_URL
+      value: "https://github.com/savitaashture/simple-go-app"
+    - name: IMAGE
+      value: "quay.io/savitaashture/helloworld-go"
+    - name: ARGS
+      value:
+        - "service"
+        - "create"
+        - "hello"
+        - "--image=quay.io/savitaashture/helloworld-go"
+        - "--env=TARGET=Tekton"
+        - "--service-account=kn-deployer-account"

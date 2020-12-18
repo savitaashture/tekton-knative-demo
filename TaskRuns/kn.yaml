@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: kn-run
+spec:
+  serviceAccountName: kn-deployer-account # check the issue when provided SA is invalid
+  taskRef:
+    name: kn
+  params:
+    - name: ARGS
+      value:
+        - "service"
+        - "create"
+        - "demo"
+        - "--force"
+        - "--image=quay.io/savitaashture/helloworld-go"

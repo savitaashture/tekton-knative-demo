@@ -1,0 +1,16 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: git-clone-run
+spec:
+  serviceAccountName: kn-deployer-account
+  workspaces:
+    - name: output
+      persistentVolumeClaim:
+        claimName: cloned-repo
+  taskRef:
+    name: git-clone
+  params:
+    - name: url
+      value: https://github.com/savitaashture/simple-go-app
