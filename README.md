@@ -47,7 +47,7 @@ kubectl apply -f TaskRuns/kn.yaml -n demo
 
 * Create Pipeline
 ```yaml
-kubectl apply -f pipeline/pipeline.yaml -n demo
+kubectl create -f pipeline/pipeline.yaml -n demo
 ```
 
 * Create resources which gives permissions to access knative objects
